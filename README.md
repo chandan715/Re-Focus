@@ -1,6 +1,7 @@
 # Re-Focus - Productivity & Motivation Companion App
 
 Re-Focus is a web-based productivity companion designed to help students stay motivated, avoid distractions, and maintain focus on their career goals. It provides simple yet effective tools to track goals, manage focus sessions, and build better study habits.
+Re-Focus was built with the help of AI tools and Vibe Coding. This project gave me a chance to explore how AI can speed up building real applications. I am still learning the frameworks and libraries behind it, but this project shows my interest in productivity tools and my eagerness to learn new technologies.
 
 ## 🎯 Project Overview
 
