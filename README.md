@@ -1,6 +1,6 @@
 # Re-Focus - Productivity & Motivation Companion App
 
-Re-Focus is a comprehensive productivity and motivation companion app designed to help students overcome common challenges such as distractions, lack of focus, and loss of motivation while working toward their academic and career goals.
+Re-Focus is a web-based productivity companion designed to help students stay motivated, avoid distractions, and maintain focus on their career goals. It provides simple yet effective tools to track goals, manage focus sessions, and build better study habits.
 
 ## 🎯 Project Overview
 
@@ -49,7 +49,6 @@ By combining goal tracking, daily motivational nudges, focus sessions (Pomodoro)
 
 ### Prerequisites
 - Python 3.8+
-- Node.js 16+
 - Git
 
 ### Backend Setup
@@ -132,8 +131,7 @@ By combining goal tracking, daily motivational nudges, focus sessions (Pomodoro)
 
 ## 🎨 Learning Objectives
 
-This project is designed to help you learn:
-
+During the developement i learned the below concepts
 ### Django Concepts
 - **Models & Migrations**: Database design and schema management
 - **Views & Serializers**: API development with DRF
@@ -165,7 +163,6 @@ The React frontend includes:
 - **Pomodoro Timer**: Focus session management
 - **Distraction Logger**: Track interruptions
 - **Mood Tracker**: Emotional well-being monitoring
-- **Profile Management**: User settings and preferences
 
 ## 🚧 Next Steps
 
@@ -201,5 +198,3 @@ This project is open source and available under the MIT License.
 ---
 
 **Happy Coding! 🚀**
-
-Remember: The goal is not just to build an app, but to learn Django and become a better developer. Take your time, experiment, and enjoy the learning process!
