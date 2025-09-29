@@ -11,7 +11,7 @@ from .models import (
     EmotionalCheckIn, MotivationalNudge, StudyStreak
 )
 from .serializers import (
-    UserSerializer, UserProfileSerializer, GoalSerializer, FocusSessionSerializer,
+    UserSerializer, UserCreateSerializer, UserProfileSerializer, GoalSerializer, FocusSessionSerializer,
     DistractionLogSerializer, EmotionalCheckInSerializer, MotivationalNudgeSerializer,
     StudyStreakSerializer, GoalDetailSerializer, UserDetailSerializer
 )
@@ -197,8 +197,9 @@ class DashboardStats(APIView):
 # User Registration and Authentication
 class UserCreate(generics.CreateAPIView):
     queryset = User.objects.all()
-    serializer_class = UserSerializer
+    serializer_class = UserCreateSerializer
     permission_classes = [permissions.AllowAny]
+    authentication_classes = []  # Disable SessionAuthentication to avoid CSRF on public signup
     
     def perform_create(self, serializer):
         user = serializer.save()

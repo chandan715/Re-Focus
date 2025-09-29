@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/context/AuthContext";
 
 const navItems = [
   { to: "/focus", label: "Focus" },
@@ -8,6 +9,7 @@ const navItems = [
 ];
 
 const SiteHeader = () => {
+  const { isAuthenticated, logout } = useAuth();
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
@@ -29,9 +31,29 @@ const SiteHeader = () => {
           ))}
         </nav>
         <div className="flex items-center gap-2">
-          <Link to="/focus">
-            <Button variant="hero" size="sm">Start Focusing</Button>
-          </Link>
+          {isAuthenticated ? (
+            <>
+              <Link to="/profile">
+                <Button variant="outline" size="sm">Profile</Button>
+              </Link>
+              <Button variant="secondary" size="sm" onClick={logout}>Logout</Button>
+              <Link to="/focus">
+                <Button variant="hero" size="sm">Start Focusing</Button>
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to="/login">
+                <Button variant="outline" size="sm">Log In</Button>
+              </Link>
+              <Link to="/register">
+                <Button variant="secondary" size="sm">Sign Up</Button>
+              </Link>
+              <Link to="/focus">
+                <Button variant="hero" size="sm">Start Focusing</Button>
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </header>

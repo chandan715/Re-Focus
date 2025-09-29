@@ -2,6 +2,10 @@ from django.contrib import admin
 from django.urls import path, include
 from django.http import HttpResponse, JsonResponse
 from django.urls import reverse
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 
 def home(request):
     return HttpResponse("Welcome to Re-Focus API backend!")
@@ -10,6 +14,8 @@ def api_root(request):
     """API root view that shows all available endpoints"""
     api_endpoints = {
         "users": {
+            "login": reverse('token_obtain_pair'),
+            "refresh_token": reverse('token_refresh'),
             "create": reverse('user-create'),
             "profile": reverse('profile-detail'),
         },
@@ -49,8 +55,8 @@ def api_root(request):
         "description": "Productivity and motivation companion app for students",
         "endpoints": api_endpoints,
         "usage": {
-            "authentication": "Most endpoints require authentication. Use Token Authentication.",
-            "headers": "Include 'Authorization: Token <your_token>' in request headers",
+            "authentication": "Most endpoints require authentication. Use JWT Authentication.",
+            "headers": "Include 'Authorization: Bearer <your_access_token>' in request headers",
             "demo_user": "demo_student / demo123456 (after running setup.py)"
         }
     }, json_dumps_params={'indent': 2})
@@ -59,5 +65,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', api_root, name='api-root'),  # API root view
     path('api/', include('api.urls')),  # API endpoints
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'), # Login
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('', home),  # Home page
 ] 

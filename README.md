@@ -36,7 +36,7 @@ By combining goal tracking, daily motivational nudges, focus sessions (Pomodoro)
 - **Django 5.2.5**: Modern Python web framework
 - **Django REST Framework**: Powerful API development
 - **SQLite Database**: Lightweight development database
-- **Token Authentication**: Secure API access
+- **JWT Authentication**: Secure API access with JSON Web Tokens
 - **CORS Support**: Frontend-backend communication
 
 ### Frontend (React + TypeScript)
@@ -107,6 +107,8 @@ By combining goal tracking, daily motivational nudges, focus sessions (Pomodoro)
 
 ### Authentication
 - `POST /api/users/create/` - User registration
+- `POST /api/token/` - User login (Obtain JWT tokens)
+- `POST /api/token/refresh/` - Refresh access token
 - `GET /api/profile/` - User profile
 
 ### Goals

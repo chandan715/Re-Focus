@@ -16,6 +16,11 @@ import Motivation from "./pages/Motivation";
 import Mood from "./pages/Mood";
 
 import NotFound from "./pages/NotFound";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Profile from "./pages/Profile";
+import ProtectedRoute from "./components/ProtectedRoute";
+import { AuthProvider } from "@/context/AuthContext";
 
 const queryClient = new QueryClient();
 
@@ -25,23 +30,35 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <HelmetProvider>
-          <SiteHeader />
-          <Routes>
-            <Route path="/" element={<Index />} />
+        <AuthProvider>
+          <HelmetProvider>
+            <SiteHeader />
+            <Routes>
+              <Route path="/" element={<Index />} />
 
-            <Route path="/focus" element={<Focus />} />
-            <Route path="/goals" element={<Goals />} />
-            <Route path="/mood" element={<Mood />} />
-            <Route path="/analytics" element={<Analytics />} />
-            <Route path="/distractions" element={<Distractions />} />
-            <Route path="/motivation" element={<Motivation />} />
+              <Route path="/focus" element={<Focus />} />
+              <Route path="/goals" element={<Goals />} />
+              <Route path="/mood" element={<Mood />} />
+              <Route path="/analytics" element={<Analytics />} />
+              <Route path="/distractions" element={<Distractions />} />
+              <Route path="/motivation" element={<Motivation />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route
+                path="/profile"
+                element={
+                  <ProtectedRoute>
+                    <Profile />
+                  </ProtectedRoute>
+                }
+              />
 
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-          <SiteFooter />
-        </HelmetProvider>
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+            <SiteFooter />
+          </HelmetProvider>
+        </AuthProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

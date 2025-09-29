@@ -84,14 +84,26 @@ Your Re-Focus app now includes:
 
 ## 🧪 Test Your API
 
-### Create a User
+### 1. Create a User (Signup)
 ```bash
 curl -X POST http://127.0.0.1:8000/api/users/create/ \
   -H "Content-Type: application/json" \
   -d '{
     "username": "testuser",
     "email": "test@example.com",
-    "password": "testpass123"
+    "password": "a-secure-password-123"
+  }'
+```
+
+### 2. Get Authentication Tokens (Login)
+
+Send your username and password to the `/api/token/` endpoint.
+```bash
+curl -X POST http://127.0.0.1:8000/api/token/ \
+  -H "Content-Type: application/json" \
+  -d '{
+    "username": "testuser",
+    "password": "a-secure-password-123"
   }'
 ```
 
