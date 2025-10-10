@@ -21,11 +21,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(os.path.join(BASE_DIR, '.env.example'))
 
 # SECURITY SETTINGS
-SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-umz-yl$p3&&q8ghxn6_li1^ibcf=1eo_6rem#%xc#$m2reb9(&')
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
-
-# ALLOWED_HOSTS for deployment
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split(',')
+SECRET_KEY = os.getenv('SECRET_KEY', 'fallback-secret-key-for-local')
 
 # Static files
 STATIC_URL = 'static/'
