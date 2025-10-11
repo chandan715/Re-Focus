@@ -60,7 +60,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',  # DRF
     'rest_framework_simplejwt.token_blacklist', # For JWT blacklisting
-    'corsheaders',  # CORS support
+    'django_cors_headers',  # CORS support
     'api',  # our app
 ]
 
