@@ -1,0 +1,40 @@
+services:
+  - type: web
+    name: refocus-backend
+    env: python
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: gunicorn backend.wsgi:application --log-file -
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.6
+      - key: DJANGO_SETTINGS_MODULE
+        value: backend.settings.production
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
+    plan: free
+    numInstances: 1
+
+  - type: web
+    name: refocus-frontend
+    env: node
+    buildCommand: |
+      npm install
+      npm run build
+    staticPublishPath: ./dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://refocus-backend.onrender.com  # Update this after backend is deployed
+    routes:
+      - type: rewrite
+        source: "/*"
+        destination: "/index.html"
+    plan: free
+
+# Uncomment and configure if you're using a database
+# databases:
+#   - name: refocus-db
+#     databaseName: refocus_db
+#     user: refocus_user
+#     plan: free

@@ -63,15 +63,16 @@ def api_root(request):
         }
     }, json_dumps_params={'indent': 2})
 
+# Single urlpatterns list
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', api_root, name='api-root'),  # API root view
-    path('api/', include('api.urls')),  # API endpoints
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'), # Login
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('', home),  # Home page
+    # path('api/', api_root, name='api-urls'),  # API root view
+    path('api/', include('api.urls')),  # API endpoints
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),  # Login
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
 
 # Serve media files in development
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
