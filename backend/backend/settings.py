@@ -58,10 +58,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',  # DRF
-    'rest_framework_simplejwt.token_blacklist', # For JWT blacklisting
-    'corsheaders',  # CORS support
-    'api',  # our app
+    'rest_framework',
+    'rest_framework_simplejwt.token_blacklist',
+    'corsheaders',
+    'api',  # your app
 ]
 
 MIDDLEWARE = [
